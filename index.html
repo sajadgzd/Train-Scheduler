@@ -35,11 +35,9 @@
             </h6>
         </div>
 
-        <!-- Row for Searching New York Times -->
         <div class="row">
             <div class="col-sm-12">
                 <br>
-                <!-- First card is for handling the search parameters -->
                 <div class="card">
                     <div class="card-header">
                         <strong>
@@ -84,33 +82,28 @@
             </div>
         </div>
 
-        <!-- This row will handle all of the retrieved articles -->
         <div class="row">
             <div class="col-sm-12">
                 <br>
 
-                <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
                 <div class="card">
 
-                    <!-- card Heading for the retrieved articles box -->
                     <div class="card-header">
                         <strong>
                             Add Trains
                         </strong>
                     </div>
 
-                    <!-- This main card will hold each of the resulting articles -->
-                    <div class="card-body" id="article-section">
+                    <div class="card-body" id="trainform-section">
 
                         <form role="form">
 
-                            <!-- Here we create the text box for capturing the search term-->
+                            <!-- Here we create the text box for capturing the Train Name -->
                             <div class="form-group">
                                 <label for="search">Train Name</label>
                                 <input type="text" class="form-control" id="search-term">
                             </div>
 
-                            <!-- Here we capture the number of records that the user wants to retrieve  -->
                             <div class="form-group">
                                 <label for="pwd">Destination</label>
                                 <select id="article-count" class="custom-select" aria-labelledby="dropdownMenuButton">
@@ -121,19 +114,16 @@
                                 </select>
                             </div>
 
-                            <!-- Here we capture the Start Year Parameter-->
                             <div class="form-group">
                                 <label for="start-year">First Train Time(HH:mm - military time)</label>
                                 <input type="text" class="form-control" id="start-year">
                             </div>
 
-                            <!-- Here we capture the End Year Parameter -->
                             <div class="form-group">
                                 <label for="end-year">Frequency (min)</label>
                                 <input type="text" class="form-control" id="end-year">
                             </div>
 
-                            <!-- Here we have our final submit button -->
                             <button type="submit" class="btn btn-default" id="run-search">
                                     Search
                                 </button>
@@ -151,12 +141,9 @@
         </div>
 
 
-
-
         <!-- Footer Region -->
         <div class="row">
             <div class="col-sm-12">
-
                 <!-- Line Break followed by closing -->
                 <hr>
                 <h5 class="text-center">
@@ -164,10 +151,8 @@
                         Made by Sajad
                      </small>
                 </h5>
-
             </div>
         </div>
-
     </div>
 
 

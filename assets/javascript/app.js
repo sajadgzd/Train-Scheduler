@@ -20,8 +20,8 @@
       // Grabs user input
       var name = $("#name").val().trim();
       var destination = $("#destination").val().trim();
-      var firstTime = moment($("#firstTime").val().trim(), "MM/DD/YYYY").format("X");
-      console.log("firstTimeTTTTT:   ", firstTime);
+      var firstTime = moment($("#firstTime").val().trim(), "HH:mm").format("X");
+      console.log("firstTime:   ", firstTime);
       var frequency = $("#frequency").val().trim();
 
       // Creates local "temporary" object for holding train data
@@ -64,7 +64,7 @@
       console.log(frequency);
 
       // Prettify the firstTime
-      var firstTimePretty = moment.unix(firstTime).format("MM/DD/YYYY");
+      var firstTimePretty = moment.unix(firstTime).format("HH:mm");
 
       // Calculate the months worked using hardcore math
       // To calculate the months worked

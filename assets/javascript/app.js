@@ -13,7 +13,7 @@
 
   var database = firebase.database();
 
-  // 2. Button for adding Employees
+  // 2. Button for adding trains
   $("#submit").on("click", function(event) {
       event.preventDefault();
 
@@ -21,27 +21,24 @@
       var name = $("#name").val().trim();
       var destination = $("#destination").val().trim();
       var firstTime = moment($("#firstTime").val().trim(), "MM/DD/YYYY").format("X");
-      console.log("STARTTTTTT:   ", firstTime);
+      console.log("firstTimeTTTTT:   ", firstTime);
       var frequency = $("#frequency").val().trim();
 
-      // Creates local "temporary" object for holding employee data
+      // Creates local "temporary" object for holding train data
       var newTrain = {
           name: name,
-          role: destination,
-          start: firstTime,
-          rate: frequency
+          destination: destination,
+          firstTime: firstTime,
+          frequency: frequency
       };
 
-      // Uploads employee data to the database
       database.ref().push(newTrain);
 
       // Logs everything to console
       console.log(newTrain.name);
-      console.log(newTrain.role);
-      console.log(newTrain.start);
-      console.log(newTrain.rate);
-
-      alert("Employee successfully added");
+      console.log(newTrain.destination);
+      console.log(newTrain.firstTime);
+      console.log(newTrain.frequency);
 
       // Clears all of the text-boxes
       $("#name").val("");
@@ -56,9 +53,9 @@
 
       // Store everything into a variable.
       var name = childSnapshot.val().name;
-      var destination = childSnapshot.val().role;
-      var firstTime = childSnapshot.val().start;
-      var frequency = childSnapshot.val().rate;
+      var destination = childSnapshot.val().destination;
+      var firstTime = childSnapshot.val().firstTime;
+      var frequency = childSnapshot.val().frequency;
 
       // Employee Info
       console.log(name);
@@ -66,7 +63,7 @@
       console.log(firstTime);
       console.log(frequency);
 
-      // Prettify the employee start
+      // Prettify the firstTime
       var firstTimePretty = moment.unix(firstTime).format("MM/DD/YYYY");
 
       // Calculate the months worked using hardcore math
@@ -74,7 +71,7 @@
       var empMonths = moment().diff(moment(firstTime, "X"), "months");
       console.log(empMonths);
 
-      // Calculate the total billed rate
+      // Calculate the total billed frequency
       var empBilled = empMonths * frequency;
       console.log(empBilled);
 

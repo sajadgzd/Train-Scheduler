@@ -64,25 +64,22 @@
       console.log(frequency);
 
       // Prettify the firstTime
-      var firstTimePretty = moment.unix(firstTime).format("HH:mm");
+      var firstTimePretty = moment(firstTime, "HH:mm").subtract(1, "years");
 
-      // Calculate the months worked using hardcore math
-      // To calculate the months worked
-      var empMonths = moment().diff(moment(firstTime, "X"), "months");
-      console.log(empMonths);
-
-      // Calculate the total billed frequency
-      var empBilled = empMonths * frequency;
-      console.log(empBilled);
+      var currentTime = moment();
+      var diffTime = moment().diff(moment(firstTimePretty), "minutes");
+      var tRemainder = diffTime % frequency;
+      var tMinutesTillTrain = frequency - tRemainder;
+      var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      var nextTrainConverted = moment(nextTrain).format("hh:mm");
 
       // Create the new row
       var newRow = $("<tr>").append(
           $("<td>").text(name),
           $("<td>").text(destination),
-          $("<td>").text(firstTimePretty),
-          $("<td>").text(empMonths),
           $("<td>").text(frequency),
-          $("<td>").text(empBilled)
+          $("<td>").text(nextTrainConverted),
+          $("<td>").text(tMinutesTillTrain)
       );
 
       // Append the new row to the table

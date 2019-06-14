@@ -10,3 +10,84 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  var database = firebase.database();
+
+  // 2. Button for adding Employees
+  $("#submit").on("click", function(event) {
+      event.preventDefault();
+
+      // Grabs user input
+      var name = $("#name").val().trim();
+      var destination = $("#destination").val().trim();
+      var firstTime = moment($("#firstTime").val().trim(), "MM/DD/YYYY").format("X");
+      console.log("STARTTTTTT:   ", firstTime);
+      var frequency = $("#frequency").val().trim();
+
+      // Creates local "temporary" object for holding employee data
+      var newTrain = {
+          name: name,
+          role: destination,
+          start: firstTime,
+          rate: frequency
+      };
+
+      // Uploads employee data to the database
+      database.ref().push(newTrain);
+
+      // Logs everything to console
+      console.log(newTrain.name);
+      console.log(newTrain.role);
+      console.log(newTrain.start);
+      console.log(newTrain.rate);
+
+      alert("Employee successfully added");
+
+      // Clears all of the text-boxes
+      $("#name").val("");
+      $("#destination").val("");
+      $("#firstTime").val("");
+      $("#frequency").val("");
+  });
+
+  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  database.ref().on("child_added", function(childSnapshot) {
+      console.log(childSnapshot.val());
+
+      // Store everything into a variable.
+      var name = childSnapshot.val().name;
+      var destination = childSnapshot.val().role;
+      var firstTime = childSnapshot.val().start;
+      var frequency = childSnapshot.val().rate;
+
+      // Employee Info
+      console.log(name);
+      console.log(destination);
+      console.log(firstTime);
+      console.log(frequency);
+
+      // Prettify the employee start
+      var firstTimePretty = moment.unix(firstTime).format("MM/DD/YYYY");
+
+      // Calculate the months worked using hardcore math
+      // To calculate the months worked
+      var empMonths = moment().diff(moment(firstTime, "X"), "months");
+      console.log(empMonths);
+
+      // Calculate the total billed rate
+      var empBilled = empMonths * frequency;
+      console.log(empBilled);
+
+      // Create the new row
+      var newRow = $("<tr>").append(
+          $("<td>").text(name),
+          $("<td>").text(destination),
+          $("<td>").text(firstTimePretty),
+          $("<td>").text(empMonths),
+          $("<td>").text(frequency),
+          $("<td>").text(empBilled)
+      );
+
+      // Append the new row to the table
+      $("#trainTable > tbody").append(newRow);
+  });

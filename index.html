@@ -46,15 +46,15 @@
                     </div>
                     <div class="card-body">
 
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="trainTable">
                             <thead>
                                 <tr>
                                     <!-- <th scope="col">#</th> -->
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Train Time</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,25 +94,25 @@
                             <!-- Here we create the text box for capturing the Train Name -->
                             <div class="form-group">
                                 <label for="search">Train Name</label>
-                                <input type="text" class="form-control" id="search-term">
+                                <input type="text" class="form-control" id="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="search">Destination</label>
-                                <input type="text" class="form-control" id="search-term">
+                                <input type="text" class="form-control" id="destination">
                             </div>
 
                             <div class="form-group">
                                 <label for="start-year">First Train Time(HH:mm - military time)</label>
-                                <input type="text" class="form-control" id="start-year">
+                                <input type="text" class="form-control" id="firstTime">
                             </div>
 
                             <div class="form-group">
                                 <label for="end-year">Frequency (min)</label>
-                                <input type="text" class="form-control" id="end-year">
+                                <input type="text" class="form-control" id="frequency">
                             </div>
 
-                            <button type="submit" class="btn btn-default" id="run-search">
+                            <button type="submit" class="btn btn-default" id="submit">
                                     Search
                             </button>
                             <!-- <button class="btn btn-default" id="clear-all">

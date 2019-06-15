@@ -57,11 +57,6 @@
       var firstTime = childSnapshot.val().firstTime;
       var frequency = childSnapshot.val().frequency;
 
-      // Employee Info
-      console.log(name);
-      console.log(destination);
-      console.log(firstTime);
-      console.log(frequency);
 
       // Prettify the firstTime
       var firstTimePretty = moment(firstTime, "HH:mm").subtract(1, "years");

@@ -21,7 +21,7 @@
       var name = $("#name").val().trim();
       var destination = $("#destination").val().trim();
       var firstTime = moment($("#firstTime").val().trim(), "HH:mm").format("X");
-      console.log("firstTime:   ", firstTime);
+      console.log("firstTime in X:   ", firstTime);
       var frequency = $("#frequency").val().trim();
 
       // Creates local "temporary" object for holding train data

@@ -1,3 +1,5 @@
+  var keyArray = [];
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
       apiKey: "AIzaSyCjAWn70J613gtrdw7qA1hXQNBEIrzt7ZQ",
@@ -76,15 +78,39 @@
       var nextTrain = moment().add(tMinutesTillTrain, "minutes");
       var nextTrainConverted = moment(nextTrain).format("HH:mm");
 
+
+      // stuff for removing the trains from the list
+      var trainKeys = childSnapshot.key;
+      console.log(trainKeys);
+      keyArray.push(trainKeys);
+      var button = $("<button>");
+      button.append("Trash");
+      button.attr("remove", trainKeys);
+      button.addClass("buttons glyphicon glyphicon-trash");
+
       // Create the new row
-      var newRow = $("<tr>").append(
+      var newRow = $(`<tr id='${trainKeys}'>`).append(
           $("<td>").text(name),
           $("<td>").text(destination),
           $("<td>").text(frequency),
           $("<td>").text(nextTrainConverted),
-          $("<td>").text(tMinutesTillTrain)
+          $("<td>").text(tMinutesTillTrain),
+          $("<td>").append(button)
       );
 
       // Append the new row to the table
       $("#trainTable > tbody").append(newRow);
+
+      //removing the rows
+      $(document.body).on("click", ".buttons", function() {
+          var trainRemove = $(this).attr("remove");
+          database.ref().child(trainRemove).remove();
+          //the object is removed, to reload the page with the updated data
+          location.reload();
+      });
+
+
+
+
+
   });

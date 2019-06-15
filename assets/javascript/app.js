@@ -84,9 +84,10 @@
       console.log(trainKeys);
       keyArray.push(trainKeys);
       var button = $("<button>");
-      button.append("Trash");
       button.attr("remove", trainKeys);
-      button.addClass("buttons glyphicon glyphicon-trash");
+      button.addClass("buttons btn btn-info btn-sm glyphicon glyphicon-trash");
+      //   button.append("Trash");
+
 
       // Create the new row
       var newRow = $(`<tr>`).append(

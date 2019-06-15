@@ -15,7 +15,7 @@
 
   function timeDisplay() {
       var timeNow = moment().format("HH:mm:ss");
-      $(".timeNow").html(timeNow)
+      $(".timeNow").text(timeNow)
   };
 
   setInterval(timeDisplay, 1000);

@@ -89,7 +89,7 @@
       button.addClass("buttons glyphicon glyphicon-trash");
 
       // Create the new row
-      var newRow = $(`<tr id='${trainKeys}'>`).append(
+      var newRow = $(`<tr>`).append(
           $("<td>").text(name),
           $("<td>").text(destination),
           $("<td>").text(frequency),

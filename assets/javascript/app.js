@@ -85,7 +85,7 @@
       keyArray.push(trainKeys);
       var button = $("<button>");
       button.attr("remove", trainKeys);
-      button.addClass("buttons btn btn-info btn-sm glyphicon glyphicon-trash");
+      button.addClass("buttons btn btn-dark btn-sm glyphicon glyphicon-trash");
       //   button.append("Trash");
 
 

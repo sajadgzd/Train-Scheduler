@@ -21,7 +21,6 @@
       var name = $("#name").val().trim();
       var destination = $("#destination").val().trim();
       var firstTime = moment($("#firstTime").val().trim(), "HH:mm").format("X");
-      console.log("firstTime in X:   ", firstTime);
       var frequency = $("#frequency").val().trim();
 
       // Creates local "temporary" object for holding train data
@@ -47,7 +46,7 @@
       $("#frequency").val("");
   });
 
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  // 3. Create Firebase event for adding train to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot) {
       console.log(childSnapshot.val());
 
@@ -61,12 +60,12 @@
       // Prettify the firstTime
       var firstTimePretty = moment(firstTime, "HH:mm").subtract(1, "years");
 
-      var currentTime = moment();
-      var diffTime = moment().diff(moment(firstTimePretty), "minutes");
+      var currentTime = moment().format("HH:mm");
+      var diffTime = moment(currentTime).diff(moment(firstTimePretty), "minutes");
       var tRemainder = diffTime % frequency;
       var tMinutesTillTrain = frequency - tRemainder;
-      var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-      var nextTrainConverted = moment(nextTrain).format("hh:mm");
+      var nextTrain = moment(currentTime).add(tMinutesTillTrain, "minutes");
+      var nextTrainConverted = moment(nextTrain).format("HH:mm");
 
       // Create the new row
       var newRow = $("<tr>").append(

@@ -13,6 +13,13 @@
 
   var database = firebase.database();
 
+  function timeDisplay() {
+      var timeNow = moment().format("HH:mm:ss");
+      $(".timeNow").html(timeNow)
+  };
+
+  setInterval(timeDisplay, 1000);
+
   // 2. Button for adding trains
   $("#submit").on("click", function(event) {
       event.preventDefault();
